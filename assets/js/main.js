@@ -3,6 +3,10 @@ const navLinks = document.querySelector("#navLinks");
 const themeToggle = document.querySelector("#themeToggle");
 const repoGrid = document.querySelector("#repoGrid");
 const repoStatus = document.querySelector("#repoStatus");
+const repoCount = document.querySelector("#repoCount");
+const starCount = document.querySelector("#starCount");
+const forkCount = document.querySelector("#forkCount");
+const topLanguage = document.querySelector("#topLanguage");
 const contactForm = document.querySelector("#contactForm");
 const formResult = document.querySelector("#formResult");
 
@@ -13,7 +17,8 @@ const fallbackRepos = [
     html_url: "https://github.com/Ritamnandy/MY_portfolio",
     language: "HTML",
     updated_at: "2026-05-26T00:00:00Z",
-    stargazers_count: 0
+    stargazers_count: 0,
+    forks_count: 0
   },
   {
     name: "QUIZ_APP",
@@ -21,7 +26,8 @@ const fallbackRepos = [
     html_url: "https://github.com/Ritamnandy/QUIZ_APP",
     language: "JavaScript",
     updated_at: "2026-05-26T00:00:00Z",
-    stargazers_count: 0
+    stargazers_count: 0,
+    forks_count: 0
   },
   {
     name: "Currency__converter",
@@ -29,7 +35,8 @@ const fallbackRepos = [
     html_url: "https://github.com/Ritamnandy/Currency__converter",
     language: "JavaScript",
     updated_at: "2026-05-26T00:00:00Z",
-    stargazers_count: 0
+    stargazers_count: 0,
+    forks_count: 0
   }
 ];
 
@@ -95,6 +102,7 @@ const renderRepos = (repos, isFallback = false) => {
           <div class="repo-meta">
             <span><i class="fa-solid fa-code"></i> ${escapeHtml(language)}</span>
             <span><i class="fa-solid fa-star"></i> ${repo.stargazers_count}</span>
+            <span><i class="fa-solid fa-code-fork"></i> ${repo.forks_count || 0}</span>
             <span><i class="fa-solid fa-clock"></i> ${formatDate(repo.updated_at)}</span>
           </div>
           <p><a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noreferrer">View repository</a></p>
@@ -108,15 +116,42 @@ const renderRepos = (repos, isFallback = false) => {
     : `Showing ${visibleRepos.length} recently updated public repositories.`;
 };
 
+const renderGitHubStats = (repos, profile = null) => {
+  const ownRepos = repos.filter((repo) => !repo.fork);
+  const languageCounts = ownRepos.reduce((counts, repo) => {
+    if (repo.language) {
+      counts[repo.language] = (counts[repo.language] || 0) + 1;
+    }
+    return counts;
+  }, {});
+  const [language = "Code"] = Object.entries(languageCounts).sort((a, b) => b[1] - a[1])[0] || [];
+
+  repoCount.textContent = profile?.public_repos ?? ownRepos.length;
+  starCount.textContent = ownRepos.reduce((total, repo) => total + repo.stargazers_count, 0);
+  forkCount.textContent = ownRepos.reduce((total, repo) => total + (repo.forks_count || 0), 0);
+  topLanguage.textContent = "Dart, JavaScript";
+};
+
 const loadGitHubRepos = async () => {
   try {
-    const response = await fetch("https://api.github.com/users/Ritamnandy/repos?sort=updated&per_page=6");
-    if (!response.ok) {
+    const [profileResponse, reposResponse] = await Promise.all([
+      fetch("https://api.github.com/users/Ritamnandy"),
+      fetch("https://api.github.com/users/Ritamnandy/repos?sort=updated&per_page=100")
+    ]);
+
+    if (!reposResponse.ok) {
       throw new Error("GitHub request failed");
     }
-    const repos = await response.json();
+
+    const [profile, repos] = await Promise.all([
+      profileResponse.ok ? profileResponse.json() : Promise.resolve(null),
+      reposResponse.json()
+    ]);
+
+    renderGitHubStats(repos, profile);
     renderRepos(repos);
   } catch (error) {
+    renderGitHubStats(fallbackRepos);
     renderRepos(fallbackRepos, true);
   }
 };

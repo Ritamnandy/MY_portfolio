@@ -1,6 +1,6 @@
 # Ritam Nandy Portfolio
 
-A professional static portfolio for Ritam Nandy, built with HTML, CSS, and JavaScript.
+A professional full-stack app developer portfolio for Ritam Nandy, built with HTML, CSS, and JavaScript.
 
 ## Structure
 
@@ -29,7 +29,7 @@ MY_portfolio/
 - Responsive portfolio layout
 - Dark and light theme toggle
 - Selected project cards with live links
-- GitHub repository section using the public GitHub API
+- GitHub repository and stats section using the public GitHub API
 - Contact form submission through Web3Forms
 
 ## Run Locally

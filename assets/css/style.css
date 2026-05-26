@@ -315,7 +315,8 @@ textarea {
 .skill-panel,
 .contact-form,
 .contact-card,
-.github-summary {
+.github-summary,
+.stat-card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -346,8 +347,8 @@ textarea {
 }
 
 .quick-facts span,
+.stat-card span,
 .project-card span,
-.skill-item span,
 .contact-form span {
   display: block;
   color: var(--muted);
@@ -369,6 +370,10 @@ textarea {
   padding: 28px;
 }
 
+.skill-panel-wide {
+  grid-column: 1 / -1;
+}
+
 .skill-panel h3,
 .project-card h3,
 .contact-card h3 {
@@ -376,55 +381,48 @@ textarea {
   font-size: 1.35rem;
 }
 
-.skill-list {
-  display: grid;
-  gap: 12px;
-}
-
-.skill-item {
+.tag-list {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-list span {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-.skill-item span {
+  gap: 9px;
+  min-height: 40px;
+  padding: 9px 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
   color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 800;
+  animation: skillRise 0.65s ease both;
+  animation-delay: var(--delay, 0s);
 }
 
-.skill-item i {
-  width: 22px;
+.tag-list i {
   color: var(--accent);
 }
 
-.meter {
-  height: 9px;
-  background: color-mix(in srgb, var(--line) 78%, transparent);
-  border-radius: 999px;
-  overflow: hidden;
+.tag-list span:hover {
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--line));
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  transform: translateY(-3px);
 }
 
-.meter span {
-  display: block;
-  width: var(--value);
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--teal));
-}
+@keyframes skillRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
 
-.skill-item:nth-of-type(1) + .meter span {
-  --value: 90%;
-}
-
-.skill-item:nth-of-type(3) + .meter span {
-  --value: 75%;
-}
-
-.skill-item:nth-of-type(5) + .meter span {
-  --value: 60%;
-}
-
-.skill-item:nth-of-type(7) + .meter span {
-  --value: 45%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .service-list {
@@ -466,6 +464,12 @@ textarea {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
+}
+
+.project-card:hover,
+.repo-card:hover,
+.stat-card:hover {
+  transform: translateY(-4px);
 }
 
 .project-card img {
@@ -521,6 +525,25 @@ textarea {
   text-align: right;
 }
 
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  padding: 22px;
+}
+
+.stat-card strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--text);
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1;
+}
+
 .repo-card h3 {
   margin: 0 0 10px;
   font-size: 1.1rem;
@@ -539,6 +562,28 @@ textarea {
   gap: 12px;
   color: var(--muted);
   font-size: 0.86rem;
+}
+
+.project-card,
+.repo-card,
+.stat-card,
+.social-links a,
+.tag-list span {
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .contact-form,
@@ -668,7 +713,8 @@ textarea {
   }
 
   .project-grid,
-  .repo-grid {
+  .repo-grid,
+  .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -714,7 +760,8 @@ textarea {
   }
 
   .project-grid,
-  .repo-grid {
+  .repo-grid,
+  .stats-grid {
     grid-template-columns: 1fr;
   }
 
