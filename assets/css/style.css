@@ -716,25 +716,11 @@ body.loaded .loader {
   border-color: rgba(56, 189, 248, 0.42);
 }
 
-.project-image {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--line);
-}
-
-.project-image img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
-
 .project-body {
-  padding: 22px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
 }
 
 .project-card h3 {
@@ -743,7 +729,7 @@ body.loaded .loader {
 }
 
 .project-card p {
-  min-height: 82px;
+  flex: 1;
   margin: 0 0 16px;
 }
 

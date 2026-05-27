@@ -46,3 +46,11 @@ python3 -m http.server 4173
 ```
 
 Then visit `http://127.0.0.1:4173`.
+
+If you see `OSError: [Errno 98] Address already in use`, port `4173` is already running in another terminal or process. Stop that server with `Ctrl + C`, or use another port:
+
+```bash
+python3 -m http.server 4174
+```
+
+Then visit `http://127.0.0.1:4174`.
