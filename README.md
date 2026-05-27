@@ -22,14 +22,9 @@ MY_portfolio/
 │   ├── css/
 │   │   └── style.css
 │   ├── images/
-│   │   ├── currency.png
 │   │   ├── main.jpg
-│   │   ├── memory.png
-│   │   ├── quiZ.png
-│   │   ├── rock.png
-│   │   ├── top2.jpeg
-│   │   ├── travel.png
-│   │   └── web.png
+│   │   └── illustrations/
+│   │       └── 7e7d0840-721f-4bd6-a823-668803318b7c.jpg
 │   ├── js/
 │   │   └── main.js
 │   └── Ritam_Nandy_Resume.html

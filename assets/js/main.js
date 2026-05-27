@@ -4,7 +4,6 @@ const projects = [
   {
     title: "Quiz App",
     category: "JavaScript",
-    image: "assets/images/quiZ.png",
     description: "Interactive quiz experience with category-style question flow, score tracking, and responsive UI.",
     demo: "https://ritamnandy.github.io/QUIZ_APP/",
     repo: "https://github.com/Ritamnandy/QUIZ_APP",
@@ -13,7 +12,6 @@ const projects = [
   {
     title: "Currency Converter",
     category: "API",
-    image: "assets/images/currency.png",
     description: "API-ready currency conversion interface designed for fast, practical calculations across devices.",
     demo: "https://ritamnandy.github.io/Currency__converter/",
     repo: "https://github.com/Ritamnandy/Currency__converter",
@@ -22,7 +20,6 @@ const projects = [
   {
     title: "Rock Paper Scissors",
     category: "Game",
-    image: "assets/images/rock.png",
     description: "A browser game with clean interactions, simple scoring logic, and polished visual feedback.",
     demo: "https://ritamnandy.github.io/Rock__Paper__Scissors__Game/",
     repo: "https://github.com/Ritamnandy/Rock__Paper__Scissors__Game",
@@ -31,7 +28,6 @@ const projects = [
   {
     title: "Travel Website",
     category: "Frontend",
-    image: "assets/images/travel.png",
     description: "Responsive travel landing experience with destination cards, visual hierarchy, and modern layout.",
     demo: "https://ritamnandy.github.io/web_travel/",
     repo: "https://github.com/Ritamnandy/web_travel",
@@ -40,7 +36,6 @@ const projects = [
   {
     title: "Memory Game",
     category: "Game",
-    image: "assets/images/memory.png",
     description: "Card matching game focused on concentration, lightweight state handling, and replayable logic.",
     demo: "https://ritamnandy.github.io/memory_game/",
     repo: "https://github.com/Ritamnandy/memory_game",
@@ -49,7 +44,6 @@ const projects = [
   {
     title: "Stellarium Demo",
     category: "Frontend",
-    image: "assets/images/web.png",
     description: "A responsive frontend build practicing premium composition, spacing, and visual detail.",
     demo: "https://ritamnandy.github.io/stellarium_demo/",
     repo: "https://github.com/Ritamnandy/stellarium_demo",
@@ -58,7 +52,6 @@ const projects = [
   {
     title: "Student Management System",
     category: "Full Stack",
-    image: "",
     description: "A structured management app for handling student records, organized data, and admin-style workflows.",
     demo: "https://ritamnandy.github.io/Student-Management-System/",
     repo: "https://github.com/Ritamnandy/Student-Management-System",
@@ -67,7 +60,6 @@ const projects = [
   {
     title: "Expense Tracker",
     category: "JavaScript",
-    image: "",
     description: "A personal finance tracker for recording expenses, reviewing totals, and keeping spending organized.",
     demo: "https://ritamnandy.github.io/Expense-Tracker/",
     repo: "https://github.com/Ritamnandy/Expense-Tracker",
@@ -76,7 +68,6 @@ const projects = [
   {
     title: "Weather App",
     category: "API",
-    image: "",
     description: "A weather dashboard that connects to live weather data and presents current conditions clearly.",
     demo: "https://ritamnandy.github.io/Weatherapp/",
     repo: "https://github.com/Ritamnandy/Weatherapp",
@@ -85,7 +76,6 @@ const projects = [
   {
     title: "Instraclone",
     category: "Frontend",
-    image: "",
     description: "A social media inspired interface focused on feed layout, visual cards, and responsive UI details.",
     demo: "https://ritamnandy.github.io/instraclone/",
     repo: "https://github.com/Ritamnandy/instraclone",
@@ -94,7 +84,6 @@ const projects = [
   {
     title: "AI Chat App",
     category: "Full Stack",
-    image: "",
     description: "A chat-style application concept built around conversational UI, message state, and backend-ready flow.",
     demo: "https://ritamnandy.github.io/AI-Chat-App/",
     repo: "https://github.com/Ritamnandy/AI-Chat-App",
@@ -103,7 +92,6 @@ const projects = [
   {
     title: "Notes App",
     category: "JavaScript",
-    image: "",
     description: "A clean notes app for writing, organizing, and managing quick ideas with a simple user flow.",
     demo: "https://ritamnandy.github.io/Notes-app/",
     repo: "https://github.com/Ritamnandy/Notes-app",
