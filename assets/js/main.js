@@ -183,8 +183,11 @@ const formResult = document.querySelector( "#formResult" );
 const cursorDot = document.querySelector( "#cursorDot" );
 const cursorRing = document.querySelector( "#cursorRing" );
 const particleCanvas = document.querySelector( "#particleCanvas" );
+const welcomePopup = document.querySelector( "#welcomePopup" );
+const welcomeTitle = document.querySelector( "#welcomeTitle" );
 
 const prefersReducedMotion = window.matchMedia( "(prefers-reduced-motion: reduce)" ).matches;
+const welcomeStorageKey = "ritamPortfolioWelcomeSeenV2";
 
 const escapeHtml = ( value ) => String( value )
   .replaceAll( "&", "&amp;" )
@@ -212,6 +215,88 @@ const savedTheme = localStorage.getItem( "theme" );
 const preferredTheme = window.matchMedia( "(prefers-color-scheme: light)" ).matches ? "light" : "dark";
 setTheme( savedTheme || preferredTheme );
 
+const typeWelcomeTitle = () =>
+{
+  if ( !welcomeTitle ) return;
+
+  const text = welcomeTitle.dataset.welcomeTitle || "Welcome to My Digital Universe";
+
+  if ( prefersReducedMotion )
+  {
+    welcomeTitle.textContent = text;
+    return;
+  }
+
+  welcomeTitle.textContent = "";
+  let index = 0;
+
+  const typeNext = () =>
+  {
+    welcomeTitle.textContent = text.slice( 0, index + 1 );
+    index += 1;
+
+    if ( index < text.length )
+    {
+      window.setTimeout( typeNext, 42 );
+    }
+  };
+
+  typeNext();
+};
+
+const closeWelcomePopup = ( target = null ) =>
+{
+  if ( !welcomePopup ) return;
+
+  welcomePopup.classList.remove( "active" );
+  welcomePopup.setAttribute( "aria-hidden", "true" );
+  document.body.classList.remove( "popup-open" );
+  localStorage.setItem( welcomeStorageKey, "true" );
+
+  if ( target )
+  {
+    window.setTimeout( () =>
+    {
+      document.querySelector( target )?.scrollIntoView( { behavior: prefersReducedMotion ? "auto" : "smooth" } );
+    }, 120 );
+  }
+};
+
+const showWelcomePopup = () =>
+{
+  if ( !welcomePopup || localStorage.getItem( welcomeStorageKey ) === "true" ) return;
+
+  welcomePopup.classList.add( "active" );
+  welcomePopup.setAttribute( "aria-hidden", "false" );
+  document.body.classList.add( "popup-open" );
+  typeWelcomeTitle();
+};
+
+welcomePopup?.addEventListener( "click", ( event ) =>
+{
+  const closeTarget = event.target.closest( "[data-welcome-close]" );
+  const targetButton = event.target.closest( "[data-welcome-target]" );
+
+  if ( closeTarget )
+  {
+    closeWelcomePopup();
+    return;
+  }
+
+  if ( targetButton )
+  {
+    closeWelcomePopup( targetButton.dataset.welcomeTarget );
+  }
+} );
+
+document.addEventListener( "keydown", ( event ) =>
+{
+  if ( event.key === "Escape" && welcomePopup?.classList.contains( "active" ) )
+  {
+    closeWelcomePopup();
+  }
+} );
+
 window.addEventListener( "load", () =>
 {
   window.setTimeout( () =>
@@ -219,6 +304,7 @@ window.addEventListener( "load", () =>
     document.body.classList.add( "loaded" );
     document.body.classList.remove( "is-loading" );
     loader?.setAttribute( "aria-hidden", "true" );
+    showWelcomePopup();
   }, 450 );
 } );
 
