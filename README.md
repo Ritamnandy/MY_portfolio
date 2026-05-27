@@ -1,6 +1,18 @@
 # Ritam Nandy Portfolio
 
-A professional full-stack app developer portfolio for Ritam Nandy, built with HTML, CSS, and JavaScript.
+A modern full-stack app developer portfolio for Ritam Nandy, built with HTML, CSS, and JavaScript.
+
+## Highlights
+
+- Futuristic black and blue responsive UI
+- Dark and light theme toggle
+- Loading animation, particle background, animated cursor, typing effect, and scroll reveal
+- Professional hero, about, skills, projects, GitHub, contact, navbar, and footer sections
+- Data-driven skills, project cards, project filtering, and repository cards
+- Live GitHub profile stats using the public GitHub API
+- Contribution graph embed and top language visualization
+- Downloadable resume document
+- SEO meta tags and performance-conscious static assets
 
 ## Structure
 
@@ -18,20 +30,19 @@ MY_portfolio/
 │   │   ├── top2.jpeg
 │   │   ├── travel.png
 │   │   └── web.png
-│   └── js/
-│       └── main.js
+│   ├── js/
+│   │   └── main.js
+│   └── Ritam_Nandy_Resume.html
 ├── index.html
 └── README.md
 ```
 
-## Features
-
-- Responsive portfolio layout
-- Dark and light theme toggle
-- Selected project cards with live links
-- GitHub repository and stats section using the public GitHub API
-- Contact form submission through Web3Forms
-
 ## Run Locally
 
-Open `index.html` in a browser, or serve the folder with any static server.
+Open `index.html` in a browser, or serve the folder with any static server:
+
+```bash
+python3 -m http.server 4173
+```
+
+Then visit `http://127.0.0.1:4173`.
