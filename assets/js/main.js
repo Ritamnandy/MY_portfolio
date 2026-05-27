@@ -58,11 +58,11 @@ const projects = [
 ];
 
 const skillBarsData = [
-  { name: "Flutter App UI", level: 86 },
+  { name: "Flutter App UI", level: 50 },
   { name: "Dart Development", level: 82 },
-  { name: "JavaScript Interfaces", level: 88 },
-  { name: "Node.js + Express.js", level: 76 },
-  { name: "REST API Development", level: 80 }
+  { name: "JavaScript Interfaces", level: 68 },
+  { name: "Node.js + Express.js", level: 60 },
+  { name: "REST API Development", level: 50 }
 ];
 
 const skillCardsData = [
